@@ -1,5 +1,7 @@
 package com.niehaus.modal;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,21 @@ public class Datasource {
 
     private Connection conn;
 
+    private void loadDriver() throws Exception {
+        URL url = getClass().getResource("sqlite-jdbc-3.27.2.1.jar");
+//        URL u = new URL("jar:file:/home/stefan/workplace/lib/SQLite/sqlite-jdbc-3.27.2.1.jar!/");
+        String classname = "org.sqlite.JDBC";
+        URLClassLoader ucl = new URLClassLoader(new URL[] { url });
+        Driver d = (Driver)Class.forName(classname, true, ucl).getDeclaredConstructor().newInstance();
+        DriverManager.registerDriver(new DriverShim(d));
+    }
+
     public boolean open() {
+        try {
+            loadDriver();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
         try {
             conn = DriverManager.getConnection(CONNECTION_STRING);
             createTables();

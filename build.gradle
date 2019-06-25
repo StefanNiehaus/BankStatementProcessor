@@ -12,7 +12,7 @@ sourceSets {
     main {
         resources {
             srcDirs = ["src/main/java"]
-            includes = ["**/*.fxml", "**/*.jpg", "**/*.css"]
+            includes = ["**/*.fxml", "**/*.jpg", "**/*.css", "**/*.jar"]
         }
     }
 }
@@ -21,6 +21,7 @@ javafx {
     version = "12"
     modules = [ 'javafx.controls', 'javafx.fxml']
 }
+
 
 dependencies {
     compile 'org.xerial:sqlite-jdbc:3.27.2.1'
