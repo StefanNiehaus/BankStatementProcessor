@@ -1,0 +1,33 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
+<?import java.net.URL?>
+<GridPane fx:controller="com.niehaus.StarterController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="root">
+
+    <Text id="welcome-text" text="Welcome"
+          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnSpan="2"/>
+
+    <Button text="Load Bank Statement"
+            onAction="#handleLoadButtonAction"
+            GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+
+    <Text fx:id="loadactiontarget"
+          GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
+
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <Button fx:id="startButton" text="Start"
+                onAction="#handleStartButtonAction"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@Login.css" />
+    </stylesheets>
+
+</GridPane>

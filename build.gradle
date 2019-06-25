@@ -1,0 +1,35 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'org.beryx.jlink' version '2.11.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java"]
+            includes = ["**/*.fxml", "**/*.jpg", "**/*.css"]
+        }
+    }
+}
+
+javafx {
+    version = "12"
+    modules = [ 'javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    compile 'org.xerial:sqlite-jdbc:3.27.2.1'
+}
+
+mainClassName = "com.niehaus.Main"
+
+jlink {
+    launcher {
+        name = 'bankstatementprocessor'
+    }
+}
