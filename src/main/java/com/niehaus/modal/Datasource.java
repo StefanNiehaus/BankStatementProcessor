@@ -51,7 +51,6 @@ public class Datasource {
 
     private void loadDriver() throws Exception {
         URL url = getClass().getResource("sqlite-jdbc-3.27.2.1.jar");
-//        URL u = new URL("jar:file:/home/stefan/workplace/lib/SQLite/sqlite-jdbc-3.27.2.1.jar!/");
         String classname = "org.sqlite.JDBC";
         URLClassLoader ucl = new URLClassLoader(new URL[] { url });
         Driver d = (Driver)Class.forName(classname, true, ucl).getDeclaredConstructor().newInstance();
@@ -97,7 +96,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("QUERY: " + sb.toString());
             ResultSet results = statement.executeQuery(sb.toString());
 
             while(results.next()) {
@@ -132,7 +130,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("QUERY: " + query);
             ResultSet results = statement.executeQuery(query);
 
             while(results.next()) {
@@ -147,7 +144,6 @@ public class Datasource {
 
     public List<String> getEntryMainCategoryList(String type) {
         List<String> mainCategoryList = new ArrayList<>();
-        System.out.println("In getEntryMainCategoryList");
 
         String query = "SELECT DISTINCT " + COLUMN_MAIN_CATEGORY +
                 " FROM " + TABLE_CLASSIFICATIONS +
@@ -155,7 +151,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("QUERY: " + query);
             ResultSet results = statement.executeQuery(query);
 
             while(results.next()) {
@@ -165,7 +160,6 @@ public class Datasource {
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        System.out.println("Returning from getEntryMainCategoryList");
         return mainCategoryList;
     }
 
@@ -178,7 +172,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("QUERY: " + query);
             ResultSet results = statement.executeQuery(query);
 
             while(results.next()) {
@@ -217,7 +210,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("INSERT: " + command);
             statement.execute(command);
             statement.close();
         } catch (SQLException e) {
@@ -241,7 +233,6 @@ public class Datasource {
 
         try {
             Statement statement = conn.createStatement();
-            System.out.println("INSERT: " + command);
             statement.execute(command);
             statement.close();
         } catch (SQLException e) {

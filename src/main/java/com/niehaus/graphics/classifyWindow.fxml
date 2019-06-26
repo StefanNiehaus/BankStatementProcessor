@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -37,8 +38,8 @@
                             </FXCollections>
                            </items>
                        </ChoiceBox>
-                        <TextField fx:id="addTypeText" />
-                        <Button fx:id="addTypeButton" onAction="#handleAddTypeButton" text="Add" />
+                        <TextField fx:id="addTypeText" onKeyReleased="#searchType" />
+                        <Button fx:id="addTypeButton" onAction="#handleAddTypeButton" prefHeight="26.0" prefWidth="165.0" text="Add Type" />
                     </HBox>
                 </HBox>
                 <HBox GridPane.rowIndex="1">
@@ -50,8 +51,8 @@
                             </FXCollections>
                            </items>
                        </ChoiceBox>
-                        <TextField fx:id="addMainCategoryText" />
-                        <Button fx:id="addMainCategoryButton" onAction="#handleAddMainCategoryButton" text="Add" />
+                        <TextField fx:id="addMainCategoryText" onKeyReleased="#searchMainCategory" />
+                        <Button fx:id="addMainCategoryButton" onAction="#handleAddMainCategoryButton" prefHeight="26.0" prefWidth="165.0" text="Add Main Category" />
                     </HBox>
                 </HBox>
                 <HBox GridPane.rowIndex="2">
@@ -63,8 +64,8 @@
                             </FXCollections>
                            </items>
                        </ChoiceBox>
-                        <TextField fx:id="addSubCategoryText" />
-                        <Button fx:id="addSubCategoryButton" onAction="#handleAddSubCategoryButton" text="Add" />
+                        <TextField fx:id="addSubCategoryText" onKeyReleased="#searchSubCategory" />
+                        <Button fx:id="addSubCategoryButton" onAction="#handleAddSubCategoryButton" prefHeight="26.0" prefWidth="165.0" text="Add Sub Catgory" />
                     </HBox>
                 </HBox>
             <columnConstraints>
@@ -83,21 +84,23 @@
 
             <HBox spacing="50">
                 <VBox>
+                    <Label text="Statement Number: " />
                     <Label text="Source: " />
                     <Label text="Date: " />
                     <Label text="Amount: " />
-                    <Label text="Description: " />
                     <Label text="Explanation: " />
+                    <Label text="Description: " />
                 </VBox>
                 <VBox>
-                    <Text fx:id="sourceText" />
-                    <Text fx:id="dateText" />
-                    <Text fx:id="amountText" />
-                    <Text fx:id="descriptionText" />
-                    <Text fx:id="explanationText" />
+                    <Text fx:id="statementNumberText" accessibleText="true" />
+                    <Text fx:id="sourceText" accessibleText="true" />
+                    <Text fx:id="dateText" accessibleText="true" />
+                    <Text fx:id="amountText" accessibleText="true" />
+                    <Text fx:id="explanationText" accessibleText="true" />
+                    <TextArea fx:id="descriptionText" accessibleText="true" maxHeight="50.0" onMouseClicked="#copyDescriptionToID" />
                 </VBox>
             <VBox.margin>
-               <Insets left="50.0" />
+               <Insets left="50.0" right="50.0" />
             </VBox.margin>
             </HBox>
         </VBox>
@@ -105,7 +108,7 @@
 
     <bottom>
         <VBox alignment="TOP_RIGHT" spacing="10" BorderPane.alignment="CENTER_RIGHT">
-            <RadioButton fx:id="skipClassifiedEntriesButton" text="Skip Auto-Classified Entries" />
+            <RadioButton fx:id="skipClassifiedEntriesButton" text="Auto-Classify" />
             <HBox alignment="TOP_RIGHT" spacing="10">
                 <TextField fx:id="addIdentifierText" onKeyReleased="#handleKeyReleased" prefWidth="200" />
                 <Button fx:id="addIdentifierButton" onAction="#handleAddIdentifierButtonAction" prefWidth="200" text="Add Identifier" />
@@ -115,8 +118,11 @@
             </HBox>
             <Button fx:id="classifyButton" onAction="#handleClassifyButtonAction" prefWidth="200" text="Save and Next" BorderPane.alignment="CENTER_RIGHT" />
          <BorderPane.margin>
-            <Insets bottom="50.0" right="50.0" />
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </VBox>
     </bottom>
 

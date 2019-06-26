@@ -25,6 +25,27 @@ public class Entry {
         setExplanation(entry.getExplanation());
     }
 
+    public boolean sameClassification(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Entry)) {
+            return false;
+        }
+
+        Entry c = (Entry) o;
+
+        if (this.getType().equals(c.getType()) &&
+                this.getMainCategory().equals(c.getMainCategory()) &&
+                this.getSubCategory().equals(c.getSubCategory())) {
+            return true;
+        }
+        return false;
+
+    }
+
     public String getSourceStatement() {
         return sourceStatement;
     }
