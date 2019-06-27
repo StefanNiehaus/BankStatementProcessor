@@ -68,8 +68,7 @@ public class ClassifierController {
         try {
             this.statementFile = new BufferedReader(new FileReader(bankStatementPath));
             /* source, date, description, amount, explanation*/
-            String bankStatementHeader = statementFile.readLine();
-            System.out.println(bankStatementHeader);
+            statementFile.readLine();
             loadEntry();
         } catch (IOException e) {
             e.printStackTrace();

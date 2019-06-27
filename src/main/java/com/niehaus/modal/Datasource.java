@@ -12,7 +12,7 @@ public class Datasource {
     private static final String CONNECTION_STRING = "jdbc:sqlite:" + System.getProperty("user.dir") +"/" + DB_NAME;
 
     /* Table for processed entries with classifications*/
-    private static final String TABLE_ENTRIES = "entries";
+    private static final String TABLE_ENTRIES = "Combinations";
     private static final String COLUMN_AMOUNT = "amount";
     private static final String COLUMN_DATE = "date";
     private static final String COLUMN_CREDIT = "debit_or_credit";

@@ -27,7 +27,7 @@ dependencies {
     compile 'org.xerial:sqlite-jdbc:3.27.2.1'
 }
 
-mainClassName = "com.niehaus.Main"
+mainClassName = "$moduleName/com.niehaus.Main"
 
 jlink {
     launcher {
