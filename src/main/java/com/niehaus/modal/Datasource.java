@@ -31,12 +31,12 @@ public class Datasource {
             "CREATE TABLE IF NOT EXISTS " + TABLE_ENTRIES + " (" +
                     COLUMN_AMOUNT + " DECIMAL, " +
                     COLUMN_DATE + " TEXT, " +
-                    COLUMN_MAIN_CATEGORY + " TEXT, " +
-                    COLUMN_SUB_CATEGORY + " TEXT, " +
+                    COLUMN_CREDIT + " TEXT, " +
                     COLUMN_DESCRIPTION + " TEXT, " +
                     COLUMN_EXPLANATION + " TEXT, " +
+                    COLUMN_MAIN_CATEGORY + " TEXT, " +
                     COLUMN_SOURCE_STATEMENT + " TEXT, " +
-                    COLUMN_CREDIT + " TEXT, " +
+                    COLUMN_SUB_CATEGORY + " TEXT, " +
                     COLUMN_TYPE + " TEXT)";
 
 
@@ -205,7 +205,7 @@ public class Datasource {
                 entry.getDescription() + "', '" +
                 entry.getExplanation() + "', '" +
                 entry.getSourceStatement() + "', '" +
-                entry.getDebit() + "', '" +
+                entry.getCredit() + "', '" +
                 entry.getType() + "')";
 
         try {

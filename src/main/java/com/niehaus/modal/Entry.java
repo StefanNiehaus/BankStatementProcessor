@@ -1,6 +1,12 @@
 package com.niehaus.modal;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Entry {
+    private static final String DATE_PATTERN = "yyyy/MM/dd";
+
     private String sourceStatement;
     private String Type;
     private String mainCategory;
@@ -21,7 +27,7 @@ public class Entry {
         setDescription(entry.getDescription());
         setAmount(entry.getAmount());
         setDate(entry.getDate());
-        setDebit(entry.getDebit());
+        setDebit(entry.getCredit());
         setExplanation(entry.getExplanation());
     }
 
@@ -37,12 +43,9 @@ public class Entry {
 
         Entry c = (Entry) o;
 
-        if (this.getType().equals(c.getType()) &&
+        return (this.getType().equals(c.getType()) &&
                 this.getMainCategory().equals(c.getMainCategory()) &&
-                this.getSubCategory().equals(c.getSubCategory())) {
-            return true;
-        }
-        return false;
+                this.getSubCategory().equals(c.getSubCategory()));
 
     }
 
@@ -98,11 +101,17 @@ public class Entry {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String date) { // TODO: Fix this date mess
+        String pattern = "yyyyMMdd";
+        try {
+            Date d = new SimpleDateFormat(pattern).parse(date);
+            this.date = new SimpleDateFormat(DATE_PATTERN).format(d);
+        } catch (ParseException e) {
+            this.date = date;
+        }
     }
 
-    public String getDebit() {
+    public String getCredit() {
         return debit;
     }
 
